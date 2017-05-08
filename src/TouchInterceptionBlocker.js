@@ -5,7 +5,7 @@ import ReactNative, { requireNativeComponent, Animated, NativeModules, UIManager
 // const NativeTouchBlocker = requireNativeComponent('TouchBlocker', null);
 
 // this is required in order to support native events
-const NativeTouchBlocker = Animated.createAnimatedComponent(requireNativeComponent('InterceptionBlocker', null));
+const NativeTouchBlocker = (Platform.OS === 'android') ? Animated.createAnimatedComponent(requireNativeComponent('InterceptionBlocker', null)) : null;
 
 // this is required in order to perform imperative commands
 const NativeViewManager = NativeModules.InterceptionBlockerManager;
