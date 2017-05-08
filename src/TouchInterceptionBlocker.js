@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactNative, { requireNativeComponent, Animated, NativeModules, UIManager,Platform } from 'react-native';
+import ReactNative, { requireNativeComponent, Animated, NativeModules, UIManager, Platform } from 'react-native';
 
 
 // const NativeTouchBlocker = requireNativeComponent('TouchBlocker', null);
@@ -31,11 +31,15 @@ export default class TouchBlocker extends Component {
   }
 
   render() {
-    return (
-      <NativeTouchBlocker
-        {...this.props}
-      />
-    );
+    if (Platform.OS === 'android') {
+      return (
+        <NativeTouchBlocker
+          {...this.props}
+        />
+      );
+    } else {
+      return null;
+    }
   }
 
 }
